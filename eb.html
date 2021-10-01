@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ELECTRIC BILL CALCULATOR</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" 
+  rel="stylesheet" 
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+   crossorigin="anonymous">
+
+
+
+
+   <style>
+     .center {
+border: 5px solid #75967d;
+padding: 50px 0;
+}
+   </style>
+   
+
+
+</head>
+<body class="bg-primary">
+
+
+ 
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">CALCULATORS</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse ms-5" id="navbarNav">
+        <ul class="navbar-nav ms-5">
+          <li class="nav-item ms-5">
+            <a class="nav-link active fw-bolder text-light" aria-current="page" href="index.html">CGPA CALCULATOR</a>
+          </li>
+          <li class="nav-item ms-5">
+            <a class="nav-link  active fw-bolder text-light" href="eb.html">ELECTRIC BILL CALCULATOR</a>
+          </li>
+          <li class="nav-item ms-5">
+            <a class="nav-link  active fw-bolder text-light" href="percent.html">PERCENTAGE CALCULATOR</a>
+          </li>
+         
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fliud">
+    <h1 class=" text-center">ELECTRIC BILL CALCULATOR</h1>
+    <div class="container bg-info center  border-rounded rounded">
+      <div class="row mx-auto" >
+        <div class="col-lg-12 ms-5">
+          <form>
+            <div class="row mb-5 ms-5 mt-5">
+              <label for="inlineFormCustomSelect" class="col-sm-3 col-form-label fw-bold text-light"><span style="font-size: 22px;">Tarrif Check</span> </label>
+              <div class="col-sm-6">
+                <select class="form-select" aria-label="Default select example" id="tarrif">
+                  <option selected>---Select the Tariff---</option>
+                  <option value="Domestic">DOMESTIC</option>
+                  <option value="commercial">COMMERCIAL</option>
+                </select>
+              </div>
+            </div>
+            <div class="row  mb-5 ms-5 mt-5">
+              <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Consumed Units:</span></label>    
+              <div class="col-sm-6">
+                <input type="number" class="form-control" id="unit">
+              </div>
+            </div>
+            <div class="row  mb-5 ms-5 mt-5">
+              <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Contracted Load (Not required for 'Domestic tariff') :</span></label>    
+              <div class="col-sm-6 mt-3">
+                <input type="number" class="form-control" id="load">
+              </div>
+            </div>
+            
+          </form>
+        </div>
+       
+      </div>
+      
+
+      <div class="row">
+        <div class="mt-1 col-2 mx-auto">
+          <button onclick="calculate();" type="submit" class="btn btn-dark text-center fw-bolder fs-4">Calculate</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  
+
+
+
+
+
+
+  <script>
+    
+    function calculate() {
+      const units = parseInt(document.getElementById("unit").value);
+      const loads = parseInt(document.getElementById('load').value);
+      
+      var Tarrif = document.getElementById("tarrif").value;
+      var amount;
+      if (Tarrif == "Domestic") {
+        if (units >= 0 && units <= 100) {
+          res =Math.ceil(units * 0); 
+          alert("BILL AMOUNT:" +res );
+        } else if (units >= 0 && units <= 200) {
+          res1 =Math.ceil((100 * 0) + ((units - 100) * 1.5) + 20);
+          alert("BILL AMOUNT:" +res1 );
+        } else if (units >= 0 && units <= 500) {
+          res2 =Math.ceil((100 * 0) + (100 * 2) + ((units - 200) * 3) + 30);
+          alert("BILL AMOUNT:" +res2 );
+        } else if (units > 500) {
+          res3 =Math.ceil((100 * 0) + (100 * 3.5) + (300 * 4.6) + ((units - 500) * 6.6) + 50);
+          alert("BILL AMOUNT:" +res3 );
+        } else {
+          alert("INVALID");
+        }
+      } 
+      
+      else if(Tarrif == "commercial")
+      {
+        
+
+
+       if (units>0 && units<=100)
+				  {
+            var ut1 = units*5;
+            var ut2 = (ut1*0.05);
+            var ut4 = loads*140;	
+				        var ans =Math.ceil(ut1+ut2+ut4);
+                alert("BILL AMOUNT:" +ans );
+                	
+				  }
+				  else if (units>100)
+				  {
+             
+				      var x1 = units*8.05;
+              var x2 = loads*140;			
+              var x3 = (x1*0.05);
+				      var x0 = Math.ceil(x1+x2+x3);
+              alert("BILL AMOUNT:" +x0 );
+              
+				  }
+
+          else {
+          alert("INVALID");
+        }
+
+
+      }
+
+      
+      
+    }
+
+  </script>
+</body>
+</html>
