@@ -58,7 +58,7 @@ padding: 50px 0;
         <div class="col-lg-12 ms-5">
           <form>
             <div class="row mb-5 ms-5 mt-5">
-              <label for="inlineFormCustomSelect" class="col-sm-3 col-form-label fw-bold text-light"><span style="font-size: 22px;">Tarrif Check</span> </label>
+              <label for="inlineFormCustomSelect" class="col-sm-3 col-form-label fw-bold text-light"><span style="font-size: 22px;">Tarrif Check :</span> </label>
               <div class="col-sm-6">
                 <select class="form-select" aria-label="Default select example" id="tarrif">
                   <option selected>---Select the Tariff---</option>
@@ -68,7 +68,7 @@ padding: 50px 0;
               </div>
             </div>
             <div class="row  mb-5 ms-5 mt-5">
-              <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Consumed Units:</span></label>    
+              <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Consumed Units :</span></label>    
               <div class="col-sm-6">
                 <input type="number" class="form-control" id="unit">
               </div>
@@ -77,6 +77,14 @@ padding: 50px 0;
               <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Contracted Load (Not required for 'Domestic tariff') :</span></label>    
               <div class="col-sm-6 mt-3">
                 <input type="number" class="form-control" id="load">
+              </div>
+            </div>
+
+
+            <div class="row  mb-5 ms-5 mt-5">
+              <label for="number" class="col-sm-3 col-form-label fw-bold text-light"> <span style="font-size: 22px;"> Bill Amount(Rs.) :</span></label>    
+              <div class="col-sm-6 ">
+                <input type="number" class="form-control" id="fres" placeholder="Rs." readonly>
               </div>
             </div>
             
@@ -113,17 +121,16 @@ padding: 50px 0;
       var amount;
       if (Tarrif == "Domestic") {
         if (units >= 0 && units <= 100) {
-          res =Math.ceil(units * 0); 
-          alert("BILL AMOUNT:" +res );
+          document.getElementById("fres").value =Math.ceil(units * 0); 
         } else if (units >= 0 && units <= 200) {
-          res1 =Math.ceil((100 * 0) + ((units - 100) * 1.5) + 20);
-          alert("BILL AMOUNT:" +res1 );
+          document.getElementById("fres").value  =Math.ceil((100 * 0) + ((units - 100) * 1.5) + 20);
+         
         } else if (units >= 0 && units <= 500) {
-          res2 =Math.ceil((100 * 0) + (100 * 2) + ((units - 200) * 3) + 30);
-          alert("BILL AMOUNT:" +res2 );
+          document.getElementById("fres").value  =Math.ceil((100 * 0) + (100 * 2) + ((units - 200) * 3) + 30);
+         
         } else if (units > 500) {
-          res3 =Math.ceil((100 * 0) + (100 * 3.5) + (300 * 4.6) + ((units - 500) * 6.6) + 50);
-          alert("BILL AMOUNT:" +res3 );
+          document.getElementById("fres").value  =Math.ceil((100 * 0) + (100 * 3.5) + (300 * 4.6) + ((units - 500) * 6.6) + 50);
+         
         } else {
           alert("INVALID");
         }
@@ -139,8 +146,8 @@ padding: 50px 0;
             var ut1 = units*5;
             var ut2 = (ut1*0.05);
             var ut4 = loads*140;	
-				        var ans =Math.ceil(ut1+ut2+ut4);
-                alert("BILL AMOUNT:" +ans );
+            document.getElementById("fres").value  =Math.ceil(ut1+ut2+ut4);
+               
                 	
 				  }
 				  else if (units>100)
@@ -149,8 +156,7 @@ padding: 50px 0;
 				      var x1 = units*8.05;
               var x2 = loads*140;			
               var x3 = (x1*0.05);
-				      var x0 = Math.ceil(x1+x2+x3);
-              alert("BILL AMOUNT:" +x0 );
+				      document.getElementById("fres").value  = Math.ceil(x1+x2+x3);
               
 				  }
 
